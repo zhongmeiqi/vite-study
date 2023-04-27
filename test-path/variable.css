@@ -1,0 +1,5 @@
+/* 我们使用的一些未来的css特性是不需要经过less sass的预处理器进行编译的,我们只能交给postcss处理 */
+:root{
+    /* css新提案：css变量 */
+    --globalColor:yellow;
+}

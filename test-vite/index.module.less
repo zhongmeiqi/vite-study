@@ -1,0 +1,16 @@
+.content{
+    width: 400px;
+    .main{
+        background: var(--globalColor);
+        padding:100px / 2;
+        margin:100px / 2;
+        background: red;
+        filter:blur(100px);
+        // 响应式布局，左侧一个菜单栏，宽度自适应 占据屏幕的30%，同时无论在任何设备下，最小不能小于100px，最大不能大于200px
+        //400px --->父容器
+        //120 ---> 一般子容器宽度（正常） 
+        //异常：父容器是200，clamp算出来最小子容器也要有100px，父容器是800，clamp算出来也是不准，最大只能是200px,不会是240px
+        width:clamp(100px,50%,200px);
+        user-select: none;
+    }
+}

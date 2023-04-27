@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 支持esmodule -->
+    <script type="module">
+
+        /* 切换文件夹 cd .\test\
+        初始化：yarn init -y
+        安装lodash：yarn add lodash
+
+        报错：需要用相对路径或者 绝对路径引入 
+        因为浏览器他不知道 node_modules
+        */
+        import _ from "./node_modules/lodash";
+        /* commandjs 写法*/
+        const lodash = require("lodash")
+
+        console.log("_",_);
+    </script>
+
+</body>
+
+</html>
