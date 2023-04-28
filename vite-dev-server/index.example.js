@@ -17,7 +17,7 @@ const app = new Koa(); //const vue = new Vue()
 // 当请求来临以后会直接进入到use注册的回调函数中
 app.use(async (ctx) => {
   //context 上下文 request ---> 请求信息 响应信息 get请求
-  console.log("ctx", ctx.request, ctx.response);
+  // console.log("ctx", ctx.request, ctx.response);
   //实际开发用中间件就行，不用这么多ifelse 进行路径判断
   if (ctx.request.url === "/") {
     // 这意味着其他人在我们要根路径的东西，比如你访问 baidu.com
@@ -25,8 +25,8 @@ app.use(async (ctx) => {
       path.resolve(__dirname, "./index.html")
     ); //在服务端一般不这么用，一般采用文件流的方式
     // 最终会生成一个绝对路径
-    console.log("///////", path.resolve(__dirname, "./index.html"));
-    console.log("indexContent", indexContent.toString());
+    // console.log("///////", path.resolve(__dirname, "./index.html"));
+    // console.log("indexContent", indexContent.toString());
     ctx.response.body = indexContent; // 作为响应体发给对应的请求的人
 
     // 你响应体是填充好了，那你要以什么形式发给他呢？你希望对方拿到你的东西的时候以什么方式去解析呢
@@ -39,7 +39,7 @@ app.use(async (ctx) => {
       path.resolve(__dirname, "./main.js")
     ); //在服务端一般不这么用，一般采用文件流的方式
     // 最终会生成一个绝对路径
-    console.log("mainContent", mainContent.toString());
+    // console.log("mainContent", mainContent.toString());
     ctx.response.body = mainContent; // 作为响应体发给对应的请求的人
 
     // 你响应体是填充好了，那你要以什么形式发给他呢？你希望对方拿到你的东西的时候以什么方式去解析呢
@@ -63,5 +63,5 @@ app.use(async (ctx) => {
   }
 });
 app.listen(5173, () => {
-  console.log("vite dev serve listen on 5173");
+  // console.log("vite dev serve listen on 5173");
 });

@@ -10,7 +10,7 @@ const app = new Koa();
 const viteConfig = require("./vite.config");
 const aliasResolver = require("./aliasResolver");
 
-console.log(viteConfig);
+// console.log(viteConfig);
 
 app.use(async (ctx) => {
   if (ctx.request.url === "/") {
@@ -46,5 +46,5 @@ app.use(async (ctx) => {
   }
 });
 app.listen(5173, () => {
-  console.log("vite dev serve listen on 5173");
+  // console.log("vite dev serve listen on 5173");
 });

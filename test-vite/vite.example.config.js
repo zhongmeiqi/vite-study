@@ -18,7 +18,7 @@ export default defineConfig({
         // name --->代表的是你此刻长css文件中的类名
         // filename ->是你当前csss文件的绝对路径
         // css -> 给的是你当前的类名的样式
-        console.log("name", name, "filename", filename, "css", css); //这一行会输出在哪？输出在node
+        // console.log("name", name, "filename", filename, "css", css); //这一行会输出在哪？输出在node
 
         // 配置成函数后，返回值就决定了他最终显示的类型
         return `${name}_${Math.random().toString(36).substr(3, 8)}`;

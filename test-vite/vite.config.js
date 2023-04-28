@@ -5,14 +5,14 @@ import viteProdConfig from "./vite.prod.config";
 
 //策略模式 ，尽量少if-else，还有一个状态模式
 const envResolver = {
-  // 这里也可以不用函数，但是可以方便扩展，比如要调试 console.log
+  // 这里也可以不用函数，但是可以方便扩展，比如要调试 // console.log
   // Object.assign({},viteBaseConfig, viteProdConfig ) === { ...viteBaseConfig, ...viteProdConfig }
   build: () => {
-    console.log("生产环境");
+    // console.log("生产环境");
     return { ...viteBaseConfig, ...viteProdConfig };
   },
   serve: () => {
-    console.log("开发环境");
+    // console.log("开发环境");
     return { ...viteBaseConfig, ...viteDevConfig }; //新配置里可能会被配置envDir .envA
   },
 };
@@ -24,17 +24,17 @@ export default defineConfig((command) => {
   // 第二个参数传：当前env文件所在的目录，不是必须使用process.cwd() envDir:"D:\vite-study\test-vite"
   // 第三个参数默认是.env，如果不传应该传空字符串,prefixes接受的环境变量前缀，默认为VITE_
   const env = loadEnv(command.mode, process.cwd());
-  console.log("env////", env);
+  // console.log("env////", env);
   // console.log("mode", command.mode);
   return envResolver[command.command]();
   // 是build还是serve主要取决于我们敲的命令是开启开发环境还是生产环境
   // if (command.command === "build") {
   //   代表生产环境的配置;
-  //   console.log("生产环境");
+  //   // console.log("生产环境");
   //   return { ...viteBaseConfig, ...viteProdConfig };
   // } else {
   //   代表开发环境的配置;
-  //   console.log("开发环境");
+  //   // console.log("开发环境");
   //   return { ...viteBaseConfig, ...viteDevConfig };
   // }
 });

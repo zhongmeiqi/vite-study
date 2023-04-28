@@ -6,7 +6,9 @@ import path from "path";
 // import { ViteAliases } from "vite-aliases";
 
 import myViteAliases from "./plugins/ViteAliases.js";
-
+import { createHtmlPlugin } from "vite-plugin-html";
+import { title } from "process";
+import CreateHtmlPlugin from "./plugins/CreateHtmlPlugin.js";
 const postcssPressEnv = require("postcss-preset-env");
 
 export default defineConfig({
@@ -71,5 +73,21 @@ export default defineConfig({
   //   },
   // },
   // plugins: [ViteAliases({ prefix: "&" })],
-  plugins: [myViteAliases()],
+  plugins: [
+    myViteAliases(),
+    // createHtmlPlugin({
+    //   inject: {
+    //     data: {
+    //       title: "主页",
+    //     },
+    //   },
+    // }),
+    CreateHtmlPlugin({
+      inject: {
+        data: {
+          title: "主页11111",
+        },
+      },
+    }),
+  ],
 });

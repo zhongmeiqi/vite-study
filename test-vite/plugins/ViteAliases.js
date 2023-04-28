@@ -12,7 +12,7 @@ function diffDifAndFile(dirFilesArr = [], basePath = "") {
     const currentFileStat = fs.statSync(
       path.resolve(__dirname, basePath + "/" + name)
     );
-    console.log("current file stat", name, currentFileStat.isDirectory());
+    // console.log("current file stat", name, currentFileStat.isDirectory());
 
     const isDirectory = currentFileStat.isDirectory();
     if (isDirectory) {
@@ -27,12 +27,12 @@ function diffDifAndFile(dirFilesArr = [], basePath = "") {
 function getTotalSrcDir(keyName) {
   const result = fs.readdirSync(path.resolve(__dirname, "../src"));
   const diffResult = diffDifAndFile(result, "../src");
-  console.log(diffResult);
+  // console.log(diffResult);
   const resolveAliaseObj = {}; // 放到就是一个一个的别名配置 @assets:xxx
   diffResult.dirs.forEach((dirName) => {
     const key = `${keyName}${dirName}`;
     const absPath = path.resolve(__dirname, "../src" + "/" + dirName);
-    console.log("key", key, absPath);
+    // console.log("key", key, absPath);
     resolveAliaseObj[key] = absPath;
   });
   return resolveAliaseObj;
@@ -43,12 +43,12 @@ module.exports = ({ keyName = "@" } = {}) => {
     // config函数可以返回一个对象，这个对象是部分的viteconfig配置【其实就是你想改的那一部分】
     config(config, env) {
       // 只是传给你 但是没有执行配置文件
-      console.log("config", config, env);
+      // console.log("config", config, env);
       // config:目前的一个配置对象
       // 【production、development】、【serve、build、yarn dev yarn build】
       // env:mode:string command:string
       const resolveAliaseObj = getTotalSrcDir(keyName);
-      console.log("resolveAliaseObj", resolveAliaseObj);
+      // console.log("resolveAliaseObj", resolveAliaseObj);
       return {
         // 在这我们要返回一个resolve出去，将src目录下的所有文件夹进行别名控制
         // 读目录
