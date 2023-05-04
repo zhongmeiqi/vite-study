@@ -1,0 +1,10 @@
+{
+  "name": "LastPluginLesson",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {"dev":"vite","build":"vite build"},
+  "devDependencies": {
+    "vite": "^4.3.4"
+  }
+}

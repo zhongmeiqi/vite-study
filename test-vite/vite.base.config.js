@@ -9,8 +9,10 @@ import myViteAliases from "./plugins/ViteAliases.js";
 import { createHtmlPlugin } from "vite-plugin-html";
 import { title } from "process";
 import CreateHtmlPlugin from "./plugins/CreateHtmlPlugin.js";
-const postcssPressEnv = require("postcss-preset-env");
 
+import { viteMockServe } from "vite-plugin-mock";
+
+const postcssPressEnv = require("postcss-preset-env");
 export default defineConfig({
   optimizeDeps: {
     exclude: [], //将指定数组中的以来不进行依赖预购建
@@ -89,5 +91,6 @@ export default defineConfig({
         },
       },
     }),
+    viteMockServe(),
   ],
 });

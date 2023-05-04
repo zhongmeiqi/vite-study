@@ -24,3 +24,13 @@ cloneDeep();
 // console.log(jsonFile); //如果你用的不是vite,在其他的一些构建工具里 json文件的导入会作为一个JSON字符串形式存在
 // console.log(JSON.stringify(jsonFile));
 // console.log(name);
+
+fetch("/api/users", {
+  method: "post",
+})
+  .then((data) => {
+    console.log("data", data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });

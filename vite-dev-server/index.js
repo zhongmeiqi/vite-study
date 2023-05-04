@@ -8,6 +8,16 @@ const app = new Koa();
 
 //我们不用返回给客户端，而且我们这里约定的名字就叫做vite.config.js
 const viteConfig = require("./vite.config");
+
+viteConfig.plugins.forEach(
+  (plugin) => plugin.config && plugin.config(viteConfig)
+);
+const mergeOptions = Object.assign({}, defaultConfig, viteConfig, terminalConf);
+
+viteConfig.plugins.forEach(
+  (plugin) => plugin.config && plugin.configResolved(mergeOptions)
+);
+
 const aliasResolver = require("./aliasResolver");
 
 // console.log(viteConfig);
@@ -17,6 +27,13 @@ app.use(async (ctx) => {
     const indexContent = await fs.promises.readFile(
       path.resolve(__dirname, "./index.html")
     );
+    let cacheIndexHtml = indexContent;
+    viteConfig.plugins.forEach((plugin) => {
+      if (plugin.transformIndexHtml) {
+        cacheIndexHtml =
+          plugin.config && plugin.transformIndexHtml(cacheIndexHtml);
+      }
+    });
 
     ctx.response.body = indexContent;
     ctx.response.set("Content-Type", "text/html");
