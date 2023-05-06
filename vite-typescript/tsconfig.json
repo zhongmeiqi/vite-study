@@ -1,0 +1,8 @@
+// 去配置一些ts的检查手段和检查规则
+
+{"compilerOptions": {
+    "skipLibCheck": true, //是否跳过node_modules目录的检查
+    "module": "ESNext",//当报错说需要更高版本之类的需要
+}
+
+}
