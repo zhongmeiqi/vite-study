@@ -12,6 +12,8 @@ import CreateHtmlPlugin from "./plugins/CreateHtmlPlugin.js";
 
 import { viteMockServe } from "vite-plugin-mock";
 
+import viteCompression from "vite-plugin-compression";
+
 const postcssPressEnv = require("postcss-preset-env");
 export default defineConfig({
   optimizeDeps: {
@@ -92,5 +94,6 @@ export default defineConfig({
       },
     }),
     viteMockServe(),
+    viteCompression(),
   ],
 });
