@@ -3,6 +3,10 @@
 
 import "./src/imageLoader";
 
+import("./src/imageLoader").then((data) => {
+  console.log("data", data);
+});
+
 import jsonFile from "./src/assets/json/index.json";
 
 import { name } from "./src/assets/json/index.json";
