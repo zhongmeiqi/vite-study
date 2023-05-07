@@ -1,4 +1,4 @@
-console.log("main.js");
+/* console.log("main.js");
 
 let str = "hellloWorld"; //类型推定
 
@@ -25,3 +25,13 @@ console.log("str", str, demo({ name: "zmq", age: 16 }));
 
 // 三斜线指令
 console.log("meta", import.meta.env.VITE_PROXY_TARGET);
+ */
+
+import { forEach } from "lodash";
+
+// ts的类型声明
+const mainArr = [];
+
+forEach(mainArr, (ele) => {
+  console.log("1ele", ele);
+});

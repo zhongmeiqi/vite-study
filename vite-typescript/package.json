@@ -8,6 +8,8 @@
     "build": "tsc --noEmit && vite build"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.194",
+    "@types/node": "^20.1.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.5",
     "vite-plugin-checker": "^0.6.0"

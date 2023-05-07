@@ -3,6 +3,9 @@
 {"compilerOptions": {
     "skipLibCheck": true, //是否跳过node_modules目录的检查
     "module": "ESNext",//当报错说需要更高版本之类的需要
+    "moduleResolution":"node" ,//设置你的模块解析方案，这样会从node.modules里面找
+    "lib":["ES2017","DOM"],//默认情况下，它的编译结果以什么语法运行
+    "allowSyntheticDefaultImports":true,
 }
 
 }
