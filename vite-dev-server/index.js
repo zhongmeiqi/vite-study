@@ -19,6 +19,7 @@ viteConfig.plugins.forEach(
 );
 
 const aliasResolver = require("./aliasResolver");
+const { request } = require("http");
 
 // console.log(viteConfig);
 
@@ -60,6 +61,15 @@ app.use(async (ctx) => {
     ctx.response.set("Content-Type", "text/javascript");
   }
   if (ctx.request.url === "/api/getUserInfo") {
+  }
+
+  // cors原理
+  if (ctx.request.url.includes("./api")) {
+    const target = proxy.target;
+    const rewrite = (str) => str;
+    const result = await request(target + rewrite("/api"));
+
+    ctx.response.body = result;
   }
 });
 app.listen(5173, () => {
