@@ -6,7 +6,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: [], //将指定数组中的以来不进行依赖预购建
   },
-  envPrefix: "ENV_", //配置vite注入客户端环境变量校验的前缀
+  envPrefix: "ENV_", //配置vite注入客户端环境变量校验的前缀，默认是VITE_开头
   css: {
     //对css的行为进行配置
     modules: {
@@ -18,12 +18,12 @@ export default defineConfig({
         // name --->代表的是你此刻长css文件中的类名
         // filename ->是你当前csss文件的绝对路径
         // css -> 给的是你当前的类名的样式
-        // console.log("name", name, "filename", filename, "css", css); //这一行会输出在哪？输出在node
+        // console.log("name", name, "filename", filename, "css", css); //输出在node终端
 
         // 配置成函数后，返回值就决定了他最终显示的类型
         return `${name}_${Math.random().toString(36).substr(3, 8)}`;
       },
-      hashPrefix: "hello",
+      hashPrefix: "hello", //生成的hash值会更加不规则，包含其中的字母
       globalModulePaths: ["./componentB.module.css"], //代表你不想参与到css模块化的路径
     },
     preprocessorOptions: {
@@ -57,9 +57,10 @@ export default defineConfig({
         assetFileNames: "[hash].[name].[ext]",
       },
     },
-    // assetsInlineLimit: 4096000, //4000kb：图片静态资源如果小于4kb会转化成base64字符，如果大于就会转化成图片
+    assetsInlineLimit: 4096000, //4000kb：图片静态资源如果小于4kb会转化成base64字符，如果大于就会转化成图片
     outDir: "testDist", //配置输出目录
     assetsDir: "static", //配置输出目录中的静态资源目录
     emptyOutDir: true, //清除输出目录中的所有文件，默认也是true
   },
 });
+
